@@ -8,7 +8,7 @@ class Database
         try {
             $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, USERNAME, PASSWORD);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch(PDOException) {
+        } catch(PDOException $e) {
             $conn = new PDO("mysql:host=". HOST , USERNAME, PASSWORD);
             $conn->exec("CREATE DATABASE IF NOT EXISTS TODO;");
             $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, USERNAME, PASSWORD);
