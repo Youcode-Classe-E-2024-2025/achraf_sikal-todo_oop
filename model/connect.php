@@ -39,19 +39,10 @@ new connect(
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);"
     );
 new connect(
-    "CREATE TABLE IF NOT EXISTS Tasks (
-    task_id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(100) NOT NULL,
-    description TEXT,
-    status ENUM('To Do', 'In Progress', 'Done') DEFAULT 'To Do',
-    task_type ENUM('Simple', 'Bug', 'Feature') DEFAULT 'Simple',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);"
-    );
-new connect(
     "CREATE TABLE IF NOT EXISTS UserTasks (
-        user_id INT,
-        task_id INT,
-        FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
-        FOREIGN KEY (task_id) REFERENCES Tasks(task_id) ON DELETE CASCADE
+    user_id INT,
+    task_id INT,
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (task_id) REFERENCES Tasks(task_id) ON DELETE CASCADE
     );"
     );
