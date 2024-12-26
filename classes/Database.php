@@ -37,7 +37,7 @@ class connect extends Database
     */
     public function setFetchMode($fetchMode)
     {
-        $this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::$fetchMode);
+        $this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, $fetchMode);
     }
 
     /**
@@ -65,4 +65,4 @@ class connect extends Database
         return ($all) ? $results->fetchAll() : $results->fetch();
     }
 }
-new connect();
+// new connect();
