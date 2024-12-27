@@ -15,5 +15,6 @@
         <?php include('../includes/main.php') ?>
     </main>  
     <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/task.js"></script>
 </body>
 </html>

@@ -30,3 +30,18 @@ const HOST = "localhost";
 const USERNAME = "root";
 const PASSWORD = "";
 const DBNAME = "TODO";
+const SQL_TASKS = "SELECT 
+    tasks.title, 
+    tasks.description, 
+    tasks.status, 
+    tasks.task_type, 
+    tasks.created_at, 
+    users.lastname, 
+    users.firstname, 
+    users.email, 
+    users.role
+FROM usertasks 
+INNER JOIN users ON usertasks.user_id = users.user_id 
+INNER JOIN tasks ON usertasks.task_id = tasks.task_id
+WHERE email = ?;
+";
