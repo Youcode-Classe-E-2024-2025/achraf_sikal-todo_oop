@@ -1,6 +1,6 @@
 <?php
 include_once __DIR__ . "/../config/config.php";
-///////// OOP  ////
+
 class Database
 {
     protected $db;
