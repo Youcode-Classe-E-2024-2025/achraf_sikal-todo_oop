@@ -15,7 +15,6 @@ class UserController {
 
     public function login($email, $password) {
         $user = $this->auth->getUserByEmail($email);
-
         if ($user) {
             // Debugging output
             // echo "Password from DB: " . $user['password'] . "<br>";
@@ -66,6 +65,7 @@ class UserController {
                     header('Location: ../views/layouts/admin.php');
                 }
                 // echo "Connexion réussie. Bienvenue, " . $result['firstname'] . "!";
+                // Redirect or start session, etc.
             } else {
                 echo "Erreur lors de la connexion. Vérifiez vos identifiants.";
             }
