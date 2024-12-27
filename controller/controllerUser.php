@@ -60,9 +60,12 @@ class UserController {
 
             $result = $this->login($email, $password);
             if ($result) {
+                if($result['role'] == "User"){
+                    header('Location: ../views/layouts/user.php');
+                }else{
+                    header('Location: ../views/layouts/admin.php');
+                }
                 // echo "Connexion réussie. Bienvenue, " . $result['firstname'] . "!";
-                header('Location: ../views/layouts/user.php');
-                // Redirect or start session, etc.
             } else {
                 echo "Erreur lors de la connexion. Vérifiez vos identifiants.";
             }
