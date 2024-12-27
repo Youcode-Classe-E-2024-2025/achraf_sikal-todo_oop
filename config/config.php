@@ -6,6 +6,7 @@ const SQL_DATABASE = "
     lastname VARCHAR(50) NOT NULL,
     firstname Varchar(50) NOT NULL,
     email VARCHAR(100),
+    password VARCHAR(250),
     role ENUM('Manager', 'User') DEFAULT 'User',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
 

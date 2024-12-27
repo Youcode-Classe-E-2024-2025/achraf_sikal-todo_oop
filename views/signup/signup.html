@@ -11,7 +11,8 @@
         <div class="mb-6 text-center">
             <h2 class="text-2xl font-bold text-gray-800">Sign Up</h2>
         </div>
-        <form class="space-y-4">
+        <!-- Form submission to UserController.php for signUp action -->
+        <form class="space-y-4" action="../../controller/controllerUser.php?action=signup" method="POST">
             <div class="grid grid-cols-2 gap-4">
                 <div>
                     <label for="first_name" class="block text-sm font-medium text-gray-700">First Name</label>
