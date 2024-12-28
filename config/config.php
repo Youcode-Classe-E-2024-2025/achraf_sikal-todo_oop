@@ -30,7 +30,8 @@ const HOST = "localhost";
 const USERNAME = "root";
 const PASSWORD = "";
 const DBNAME = "TODO";
-const SQL_TASKS = "SELECT 
+const SQL_TASKS = 
+"SELECT 
     tasks.title, 
     tasks.description, 
     tasks.status, 

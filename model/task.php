@@ -1,22 +1,17 @@
 <?php
 
-include("../classes/Database.php");
+include __DIR__ ."/../classes/Database.php";
+include_once __DIR__ . "/../config/config.php";
 
-class ModelTask {
-    public $database;
 
-    public function __construct() {
-        $this->database = new connect();
-    }
-
+class ModelTask extends connect {
     public function insertTask($title, $description) {
         $query = "INSERT INTO Tasks (title, description) VALUES (?, ?)";
-        return $this->database->execute($query, [$title, $description]);
+        return $this->execute($query, [$title, $description]);
     }
 
-    public function getTasks() {
-        $query = "SELECT * FROM Tasks";
-        return $this->database->fetch($query, null, true);
+    public function getTasks($email) {
+        return $this->fetch(SQL_TASKS, [$email], false);
     }
 }
 // $model = new ModelTask();
@@ -33,9 +28,3 @@ class ModelTask {
 // echo "<pre>";
 //     print_r($tasks);
 // echo "</pre>";
-?>
-
-
-
-?>
-

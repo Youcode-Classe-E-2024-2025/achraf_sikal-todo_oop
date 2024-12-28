@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include("../model/user.php");
 
 class UserController {
@@ -56,9 +56,9 @@ class UserController {
             // // Debugging output
             // echo "Email: " . $email . "<br>";
             // echo "Password: " . $password . "<br>";
-
             $result = $this->login($email, $password);
             if ($result) {
+                $_SESSION["user"] = $email;
                 if($result['role'] == "User"){
                     header('Location: ../views/layouts/user.php');
                 }else{

@@ -6,7 +6,7 @@
                 <i class="bi bi-arrow-down-up font-bold  text-white"></i>
             </div>
             <div id="tache" class="tache w-full mt-6 px-3">
-                <!-- ajouter les tache -->
+                <?php include('task.php') ?>
             </div>
         </div>
     

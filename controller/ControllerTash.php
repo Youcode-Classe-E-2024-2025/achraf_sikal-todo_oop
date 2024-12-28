@@ -1,6 +1,6 @@
 <?php
-
-include("../model/task.php");
+session_start();
+include __DIR__ ."/../model/task.php";
 
 class TaskController {
     private $model;
@@ -35,7 +35,7 @@ class TaskController {
     }
 
     public function viewTasks() {
-        return $this->model->getTasks();
+        return $this->model->getTasks($_SESSION["user"]);
     }
 }
 
