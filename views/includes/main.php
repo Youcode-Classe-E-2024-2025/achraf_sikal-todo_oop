@@ -6,7 +6,7 @@
                 <i class="bi bi-arrow-down-up font-bold  text-white"></i>
             </div>
             <div id="tache" class="tache w-full mt-6 px-3">
-                <?php include('task.php') ;
+                <?php include_once('task.php') ;
                 taskv("To Do");
                 ?>
             </div>
@@ -19,7 +19,7 @@
                 <i class="bi bi-arrow-down-up font-bold text-white"></i>
             </div>
             <div id="doingTasks" class="doing-tasks w-full mt-6 px-3">
-            <?php include('task.php') ;
+            <?php include_once('task.php') ;
                 taskv("In Progress");
                 ?>
             </div>
@@ -32,7 +32,7 @@
                 <i class="bi bi-arrow-down-up font-bold text-white"></i>
             </div>
             <div id="doneTasks" class="done-tasks w-full mt-6 px-3">
-            <?php include('task.php') ;
+            <?php include_once('task.php') ;
                 taskv("Done");
                 ?>
             </div>
