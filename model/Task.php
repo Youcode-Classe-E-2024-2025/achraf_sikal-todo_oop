@@ -14,7 +14,12 @@ class ModelTask extends connect {
     //     return $this->execute($query, [$title, $description]);
     // }
     public function getTasks($email) {
-        return $this->fetch(SQL_TASKS, [$email], false);
+        $result = $this->fetch(SQL_TASKS, [$email], false);
+        if ($result) {
+            return $result;
+        }else {
+            return [];
+        }
     }
 }
 // $model = new ModelTask();
