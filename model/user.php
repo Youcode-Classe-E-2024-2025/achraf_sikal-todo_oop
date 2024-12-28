@@ -17,7 +17,7 @@ class Auth {
 
     public function getUserByEmail($email) {
         $query = "SELECT * FROM Users WHERE email = ?";
-        return $this->database->fetch($query, [$email], false);
+        return ($this->database->fetch($query, [$email], false))["id"];
     }
 }
 ?>

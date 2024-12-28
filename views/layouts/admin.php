@@ -39,13 +39,15 @@
         <form action="../../controller/ControllerTash.php?action=insert" method="POST" class="space-y-4 p-6 bg-gray-100 rounded-lg shadow-md mx-auto w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
             <div>
                 <label class="block text-sm font-medium text-gray-700" for="title">Titre</label>
-                <input type="text" id="title"  name="title" class="p-2 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200" placeholder="Enter title">
+                <input type="text" id="title"  name="title" class="p-2 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200" placeholder="Enter title" required>
             </div>
             <div>
                 <label class="block text-sm font-medium text-gray-700" for="description">Description</label>
                 <textarea id="description" rows="3" name="description" class=" pl-3 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200" placeholder="Enter description"></textarea>
             </div>    
             <div>
+                <label class="block text-sm font-medium text-gray-700" for="title">assign</label>
+                <input type="email" id="email"  name="email" class="p-2 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200" placeholder="Enter email" required>
             </div>
             <button id="submitTache" type="submit" class="mt-4 w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700">Submit</button>
             <button id="modifierTache" type="submit" class="mt-4 w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 hidden">Update</button>

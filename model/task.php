@@ -9,7 +9,10 @@ class ModelTask extends connect {
         $query = "INSERT INTO Tasks (title, description) VALUES (?, ?)";
         return $this->execute($query, [$title, $description]);
     }
-
+    // public function assignTask($email) {
+    //     $query = "INSERT INTO Tasks (title, description) VALUES (?, ?)";
+    //     return $this->execute($query, [$title, $description]);
+    // }
     public function getTasks($email) {
         return $this->fetch(SQL_TASKS, [$email], false);
     }
