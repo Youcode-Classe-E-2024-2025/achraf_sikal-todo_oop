@@ -40,7 +40,13 @@ class connect extends Database {
         $results = self::exec($request, $values);
         return ($results) ? true : false;
     }
-
+    /**
+    * Execute an SQL query and return row(s) of the result
+    * @param string $request SQL query
+    * @param array|null $values Optional values
+    * @param bool $all Query with several rows or not
+    * @return array|mixed Return data
+    */
     public function fetch($request, $values = null, $all = true) {
         $results = self::exec($request, $values);
         return ($all) ? $results->fetchAll() : $results->fetch();

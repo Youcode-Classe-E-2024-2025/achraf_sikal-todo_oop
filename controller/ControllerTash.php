@@ -15,7 +15,7 @@ class TaskController {
         if (isset($_GET['action']) && $_GET['action'] == 'insert' && $_SERVER["REQUEST_METHOD"] == "POST") {
             $title = htmlspecialchars($_POST['title']);
             $description = htmlspecialchars($_POST['description']);
-            $email = htmlspecialchars($_POST['email']);
+            $email = $_POST['email'];
             $result = $this->insertTask($title, $description, $email);
             if ($result) {
                 header("Location: ../views/layouts/admin.php");

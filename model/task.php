@@ -10,8 +10,8 @@ class ModelTask extends connect {
         $query = "INSERT INTO Tasks (title, description) VALUES (?, ?)";
         $this->execute($query, [$title, $description]);
         $taskId = $this->db->lastInsertId();
-        $this->fetch("SELECT id FROM users WHERE email = ?", [$email]);
-        $userId = $user['id'];
+        $user = $this->fetch("SELECT user_id FROM users WHERE email = ?;", [$email]);
+        $userId = $user[0]["user_id"];
         $this->execute("INSERT INTO usertasks (user_id, task_id) VALUES (?, ?)", [$userId, $taskId]);
         $this->db->commit();
         return true;
