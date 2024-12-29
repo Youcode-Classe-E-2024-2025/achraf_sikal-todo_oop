@@ -26,7 +26,7 @@ class Database {
 }
 
 class connect extends Database {
-    private function exec($request, $values = null) {
+    protected function exec($request, $values = null) {
         $req = $this->db->prepare($request);
         $req->execute($values);
         return $req;

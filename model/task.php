@@ -5,13 +5,43 @@ include_once __DIR__ . "/../config/config.php";
 
 
 class ModelTask extends connect {
-    public function insertTask($title, $description) {
+    public function insertTask($title, $description, $email) {
+        $this->db->beginTransaction();
         $query = "INSERT INTO Tasks (title, description) VALUES (?, ?)";
-        return $this->execute($query, [$title, $description]);
+        $this->execute($query, [$title, $description]);
+        $taskId = $this->db->lastInsertId();
+        $this->fetch("SELECT id FROM users WHERE email = ?", [$email]);
+        $userId = $user['id'];
+        $this->execute("INSERT INTO usertasks (user_id, task_id) VALUES (?, ?)", [$userId, $taskId]);
+        $this->db->commit();
+        return true;
     }
-    // public function assignTask($email) {
-    //     $query = "INSERT INTO Tasks (title, description) VALUES (?, ?)";
-    //     return $this->execute($query, [$title, $description]);
+    // public function inseask($title, $description, $email) {
+    //     try {
+    //         $this->db->beginTransaction();
+            
+    //         // Check if user exists
+    //         $stmt = $this->exec("SELECT id FROM users WHERE email = ?", [$email]);
+    //         $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    //         if (!$user) {
+    //             throw new Exception("User with email $email not found!");
+    //         }
+    //         $userId = $user['id'];
+    //         var_dump($userId);
+
+    //         // Insert task
+    //         $stmt = $this->exec("INSERT INTO tasks (title, description) VALUES (?, ?)", [$title, $description]);
+
+    //         // Assign task to user
+    //         $this->exec("INSERT INTO user_task (user_id, task_id) VALUES (?, ?)", [$userId, $taskId]);
+
+    //         $this->db->commit();
+    //         return "Task '$title' assigned to $email successfully!";
+    //     } catch (Exception $e) {
+    //         $this->db->rollBack();
+    //         return "Failed to create task: " . $e->getMessage();
+    //     }
     // }
     public function getTasks($email) {
         $result = $this->fetch(SQL_TASKS, [$email], false);

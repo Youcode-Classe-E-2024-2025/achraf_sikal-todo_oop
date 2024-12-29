@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include __DIR__ ."/../model/task.php";
 
 class TaskController {
@@ -11,9 +13,10 @@ class TaskController {
 
     public function handleRequest() {
         if (isset($_GET['action']) && $_GET['action'] == 'insert' && $_SERVER["REQUEST_METHOD"] == "POST") {
-            $title = $_POST['title'];
-            $description = $_POST['description'];
-            $result = $this->insertTask($title, $description);
+            $title = htmlspecialchars($_POST['title']);
+            $description = htmlspecialchars($_POST['description']);
+            $email = htmlspecialchars($_POST['email']);
+            $result = $this->insertTask($title, $description, $email);
             if ($result) {
                 header("Location: ../views/layouts/admin.php");
                 exit();
@@ -30,12 +33,14 @@ class TaskController {
         }
     }
 
-    public function insertTask($title, $description) {
-        return $this->model->insertTask($title, $description);
+    public function insertTask($title, $description, $email) {
+        return $this->model->insertTask($title, $description, $email);
     }
 
     public function viewTasks() {
-        return $this->model->getTasks($_SESSION["user"]);
+        if (isset($_SESSION["user"])) {
+            return $this->model->getTasks($_SESSION["user"]);
+        }
     }
 }
 

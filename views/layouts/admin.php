@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <?php include("../includes/nav.php")?>
+        <?php include_once("../includes/nav.php")?>
     </header>
     <main>
         <section class="flex flex-col md:flex-row justify-between px-4 md:px-24 p-5 my-24">
@@ -25,16 +25,13 @@
                 <option value="p3">P3</option>
             </select>
         </section>
-        <?php include('../includes/main.php') ?>
+        <?php include_once('../includes/main.php') ?>
     </main>    
     
     <!-- MOdel window -->
 
     <section id="myModal" class="model p-6 rounded-lg shadow-md fixed inset-0 z-10 pt-30 overflow-auto bg-black bg-opacity-40 ms:border-2 ">
         <div class="flex justify-end p-2 mt-16 mb-6 ">
-            <button id="close" class="btn btn-link text-white">
-                <i class="bi bi-x-lg" style="font-size: 1.5rem;"></i>
-            </button>
         </div>
         <form action="../../controller/ControllerTash.php?action=insert" method="POST" class="space-y-4 p-6 bg-gray-100 rounded-lg shadow-md mx-auto w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
             <div>
@@ -55,5 +52,13 @@
     </section>
 
     <script src="../../assets/js/main.js"></script>
+    <script>
+        const modal = document.getElementById('myModal');
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
