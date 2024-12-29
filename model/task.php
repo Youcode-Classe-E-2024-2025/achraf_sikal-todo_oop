@@ -18,7 +18,7 @@ class ModelTask extends connect {
     }
     public function editTask($name, $description, $type, $status,$id) {
         $this->db->beginTransaction();
-        $query = "UPDATE tasks SET title = ?, description = ?, status = ?, task_type = ? WHERE id = ?;";
+        $query = "UPDATE tasks SET title = ?, description = ?, status = ?, task_type = ? WHERE task_id = ?;";
         return $this->execute($query, [$name, $description, $status, $type, $id]);
     }
     public function getTasks($email) {
