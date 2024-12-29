@@ -52,6 +52,9 @@ class TaskController {
     public function ediTask($name, $description, $type, $status, $id) {
         return $this->model->editTask($name, $description, $type, $status, $id);
     }
+    public function deleteTask($taskId) { 
+        return $this->model->deleteTask($taskId); 
+    }
     public function viewTasks() {
         if (isset($_SESSION["user"])) {
             return $this->model->getTasks($_SESSION["user"]);

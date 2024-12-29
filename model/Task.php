@@ -30,4 +30,14 @@ class ModelTask extends connect {
             return [];
         }
     }
+
+
+    public function deleteTask($taskId) {
+        $this->db->beginTransaction();
+        $this->execute("DELETE FROM usertasks WHERE task_id = ?", [$taskId]);
+        $this->execute("DELETE FROM tasks WHERE task_id = ?", [$taskId]);
+        $this->db->commit();
+        return true;
+    }
+    
 }
