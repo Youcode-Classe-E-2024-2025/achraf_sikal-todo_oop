@@ -16,7 +16,13 @@ class ModelTask extends connect {
         $this->db->commit();
         return true;
     }
+    public function editTask($name, $description, $type, $status,$id) {
+        $this->db->beginTransaction();
+        $query = "UPDATE tasks SET title = ?, description = ?, status = ?, task_type = ? WHERE id = ?;";
+        return $this->execute($query, [$name, $description, $status, $type, $id]);
+    }
     public function getTasks($email) {
+        // $this->setFetchMode(PDO::FETCH_ASSOC);
         $result = $this->fetch(SQL_TASKS, [$email], false);
         if ($result) {
             return $result;

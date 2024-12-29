@@ -24,7 +24,20 @@ class TaskController {
                 echo "Error inserting task.";
             }
         }
-
+        elseif (isset($_GET['action']) && $_GET['action'] == 'edit' && $_SERVER["REQUEST_METHOD"] == "POST") {
+            $name = htmlspecialchars($_POST['name']);
+            $description = htmlspecialchars($_POST['description']);
+            $type = $_POST['type'];
+            $status = $_POST['status'];
+            $id = (int) $_POST['id'];
+            $result = $this->ediTask($name, $description, $type, $status,$id);
+            if ($result) {
+                header("Location: ../views/layouts/user.php");
+                exit();
+            } else {
+                echo "Error inserting task.";
+            }
+        }
         if (isset($_GET['action']) && $_GET['action'] == 'view') {
             $tasks = $this->viewTasks();
             echo "<pre>";
@@ -36,7 +49,9 @@ class TaskController {
     public function insertTask($title, $description, $email) {
         return $this->model->insertTask($title, $description, $email);
     }
-
+    public function ediTask($name, $description, $type, $status, $id) {
+        return $this->model->editTask($name, $description, $type, $status, $id);
+    }
     public function viewTasks() {
         if (isset($_SESSION["user"])) {
             return $this->model->getTasks($_SESSION["user"]);

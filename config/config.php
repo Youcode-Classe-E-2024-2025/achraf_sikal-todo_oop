@@ -32,6 +32,7 @@ const PASSWORD = "";
 const DBNAME = "TODO";
 const SQL_TASKS = 
 "SELECT 
+    tasks.task_id,
     tasks.title, 
     tasks.description, 
     tasks.status, 
