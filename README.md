@@ -37,7 +37,8 @@
 ---
 
 ## Diagramme de Classes
-*(À insérer : Un diagramme UML illustrant les relations entre les classes principales, comme `Task`, `Bug`, et `Feature`.)*
+<img width="442" alt="image" src="https://github.com/user-attachments/assets/a63f8530-f835-4c51-b1a5-fb02d62de73b" />
+
 
 ---
 
