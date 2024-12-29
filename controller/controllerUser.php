@@ -16,10 +16,6 @@ class UserController {
     public function login($email, $password) {
         $user = $this->auth->getUserByEmail($email);
         if ($user) {
-            // Debugging output
-            // echo "Password from DB: " . $user['password'] . "<br>";
-            // echo "Password entered: " . $password . "<br>";
-
             // Verify the entered password against the stored hashed password
             if (password_verify($password, $user['password'])) {
                 echo "Password is correct!<br>";
@@ -52,10 +48,6 @@ class UserController {
         if (isset($_GET['action']) && $_GET['action'] == 'login' && $_SERVER["REQUEST_METHOD"] == "POST") {
             $email = $_POST['email'];
             $password = $_POST['password'];
-
-            // // Debugging output
-            // echo "Email: " . $email . "<br>";
-            // echo "Password: " . $password . "<br>";
             $result = $this->login($email, $password);
             if ($result) {
                 $_SESSION["user"] = $email;
@@ -64,7 +56,6 @@ class UserController {
                 }else{
                     header('Location: ../views/layouts/admin.php');
                 }
-                // echo "Connexion réussie. Bienvenue, " . $result['firstname'] . "!";
                 // Redirect or start session, etc.
             } else {
                 echo "Erreur lors de la connexion. Vérifiez vos identifiants.";
